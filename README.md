@@ -70,7 +70,95 @@ As a user, I can:
 
    Example Response:
    {
-    "id": 1,
+    "id": 1,document.addEventListener("DOMContentLoaded", () => {
+  const characterBar = document.getElementById("character-bar");
+  const detailedInfo = document.getElementById("detailed-info");
+  const voteCount = document.getElementById("vote-count");
+  const votesForm = document.getElementById("votes-form");
+  const votesInput = document.getElementById("votes");
+  const resetButton = document.getElementById("reset-btn");
+  const characterForm = document.getElementById("character-form");
+  const nameInput = document.getElementById("name");
+  const imageUrlInput = document.getElementById("image-url");
+  let currentCharacter = null;
+
+  // Fetch and display character names
+  fetch("/characters")
+    .then((response) => response.json())
+    .then((characters) => characters.forEach(addCharacterToBar));
+
+  // Add character name to the character bar
+  function addCharacterToBar(character) {
+    const span = document.createElement("span");
+    span.textContent = character.name;
+    span.classList.add("character-name");
+    span.addEventListener("click", () => displayCharacterDetails(character));
+    characterBar.appendChild(span);
+  }
+
+  // Display character details
+  function displayCharacterDetails(character) {
+    currentCharacter = character;
+    detailedInfo.querySelector("#name").textContent = character.name;
+    detailedInfo.querySelector("#image").src = character.image;
+    voteCount.textContent = character.votes;
+  }
+
+  // Handle votes submission
+  votesForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const addedVotes = parseInt(votesInput.value) || 0;
+    currentCharacter.votes += addedVotes;
+    updateVotes(currentCharacter.id, currentCharacter.votes);
+    voteCount.textContent = currentCharacter.votes;
+    votesInput.value = "";
+  });
+
+  // Update votes on the server
+  function updateVotes(id, votes) {
+    fetch(`/characters/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ votes }),
+    });
+  }
+
+  // Reset votes to zero
+  resetButton.addEventListener("click", () => {
+    if (currentCharacter) {
+      currentCharacter.votes = 0;
+      updateVotes(currentCharacter.id, 0);
+      voteCount.textContent = currentCharacter.votes;
+    }
+  });
+
+  // Handle adding a new character
+  characterForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const newCharacter = {
+      name: nameInput.value,
+      image: imageUrlInput.value,
+      votes: 0,
+    };
+    fetch("/characters", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newCharacter),
+    })
+      .then((response) => response.json())
+      .then((character) => {
+        addCharacterToBar(character);
+        displayCharacterDetails(character);
+      });
+    nameInput.value = "";
+    imageUrlInput.value = "";
+  });
+});
+
     "name": "Mr. Cute",
     "image": "https://thumbs.gfycat.com/EquatorialIckyCat-max-1mb.gif",
     "votes": 0
