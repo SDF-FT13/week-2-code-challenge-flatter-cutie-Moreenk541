@@ -68,8 +68,38 @@ function updateVotes(id, votes) {
         voteCount.textContent = 0;
       
     }
+
     
   });
+// Handle adding a new character
+characterForm.addEventListener('submit', event =>{
+    event.preventDefault();
+    const newCharacter ={
+        name : nameInput.value,
+        image : imageUrlInput.value,
+        votes:0
+    };
+    fetch("http://localhost:3000/characters",{
+        method: 'POST',
+        headers:{
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newCharacter)
+    })
+    .then(response => response.json())
+    .then(character => {
+      // Add new character to the character bar and display its details
+      addCharacterToBar(character);
+      displayCharacterDetails(character);
+
+
+      nameInput.value = "";
+      imageUrlInput.value = "";
+    });
+})
+       
+   
+
 
 
 })
