@@ -33,4 +33,12 @@ function addCharacterToBar(character){
 }
 
 // Display character details function
+function displayCharacterDetails(character){
+    currentCharacter = character;
+    detailedInfo.querySelector('#name').textContent = character.name
+    const img = detailedInfo.querySelector('#image');
+    img.src = character.image;
+    img.alt = character.name;
+    voteCount.textContent = character.votes;
+}
 })
