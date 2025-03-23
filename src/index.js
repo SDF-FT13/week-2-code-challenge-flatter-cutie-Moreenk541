@@ -41,4 +41,23 @@ function displayCharacterDetails(character){
     img.alt = character.name;
     voteCount.textContent = character.votes;
 }
+votesForm.addEventListener('submit', event =>{
+    event.preventDefault();
+    const addedVotes = parseInt(votesInput.value) || 0;
+    currentCharacter.votes += addedVotes;
+    updateVotes(currentCharacter.id, currentCharacter.votes);
+    voteCount.textContent = currentCharacter.votes;
+    votesInput.value = "";
+
+})
+function updateVotesOnServer(id, votes) {
+    fetch(`http://localhost:3000/characters/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ votes })
+    })
+}
+
 })
