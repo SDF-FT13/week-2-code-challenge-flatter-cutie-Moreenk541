@@ -50,7 +50,7 @@ votesForm.addEventListener('submit', event =>{
     votesInput.value = "";
 
 })
-function updateVotesOnServer(id, votes) {
+function updateVotes(id, votes) {
     fetch(`http://localhost:3000/characters/${id}`, {
       method: "PATCH",
       headers: {
@@ -60,4 +60,18 @@ function updateVotesOnServer(id, votes) {
     })
 }
 
+  // reset votes button click
+  resetButton.addEventListener("click", () => {
+    if (currentCharacter) {
+        currentCharacter.votes = 0;
+        updateVotes(currentCharacter.id, 0);
+        voteCount.textContent = 0;
+      
+    }
+    
+  });
+
+
 })
+
+
