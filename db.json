@@ -22,13 +22,28 @@
       "id": "4",
       "name": "Dr. Lion",
       "image": "http://bestanimations.com/Animals/Mammals/Cats/Lions/animated-lion-gif-11.gif",
-      "votes": 300
+      "votes": 400
     },
     {
       "id": "5",
       "name": "Mme. Panda",
       "image": "https://media.giphy.com/media/ALalVMOVR8Qw/giphy.gif",
-      "votes": 100
+      "votes": 277
+    },
+    {
+      "id": "473e",
+      "image": "https://www.google.com/imgres?q=animals&imgurl=https%3A%2F%2Fi.natgeofe.com%2Fn%2Fbec7bd50-0d57-4982-aeb5-82e5f8184f89%2F02-machine-saving-animals-nationalgeographic_1977490.jpg&imgrefurl=https%3A%2F%2Fwww.nationalgeographic.com%2Fanimals%2Farticle%2Fartificial-intelligence-counts-wild-animals&docid=6uko2wBhUdySjM&tbnid=0FdOfZWHGGgSxM&vet=12ahUKEwiu0PeE_KCMAxW4VfEDHY8tMG4QM3oECBkQAA..i&w=3072&h=2048&hcb=2&ved=2ahUKEwiu0PeE_KCMAxW4VfEDHY8tMG4QM3oECBkQAA",
+      "votes": 0
+    },
+    {
+      "id": "af07",
+      "image": "https://www.google.com/imgres?q=animals&imgurl=https%3A%2F%2Fi.natgeofe.com%2Fn%2Fbec7bd50-0d57-4982-aeb5-82e5f8184f89%2F02-machine-saving-animals-nationalgeographic_1977490.jpg&imgrefurl=https%3A%2F%2Fwww.nationalgeographic.com%2Fanimals%2Farticle%2Fartificial-intelligence-counts-wild-animals&docid=6uko2wBhUdySjM&tbnid=0FdOfZWHGGgSxM&vet=12ahUKEwiu0PeE_KCMAxW4VfEDHY8tMG4QM3oECBkQAA..i&w=3072&h=2048&hcb=2&ved=2ahUKEwiu0PeE_KCMAxW4VfEDHY8tMG4QM3oECBkQAA",
+      "votes": 0
+    },
+    {
+      "id": "4bee",
+      "image": "Development/Code/Phase-1/week-2-code-challenge-flatter-cutie-Moreenk541/assets/lion.gif",
+      "votes": 0
     }
   ]
 }

@@ -72,32 +72,34 @@ function updateVotes(id, votes) {
     
   });
 // Handle adding a new character
-characterForm.addEventListener('submit', event =>{
+characterForm.addEventListener('submit', event => {
     event.preventDefault();
-    const newCharacter ={
-        name : nameInput.value,
-        image : imageUrlInput.value,
-        votes:0
-    };
-    fetch("http://localhost:3000/characters",{
+
+    const newName = document.getElementById("name").value;
+    const newImage = document.getElementById("image-url").value;
+    const newCharacter = { name: newName, image: newImage, votes: 0 };
+
+    fetch("http://localhost:3000/characters", {
         method: 'POST',
-        headers:{
+        headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(newCharacter)
     })
     .then(response => response.json())
     .then(character => {
-      // Add new character to the character bar and display its details
-      addCharacterToBar(character);
-      displayCharacterDetails(character);
+        // Add new character to the character bar
+        addCharacterToBar(character);
 
+        // Display newly added character details
+        displayCharacterDetails(character);
 
-      nameInput.value = "";
-      imageUrlInput.value = "";
-    });
-})
-       
+        // Clear input fields
+        characterForm.reset();
+    })
+   
+});
+     
    
 
 
